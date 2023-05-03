@@ -16,8 +16,8 @@ rdd2 = rdd1.flatMap(lambda line: line.split(' '))
 rdd3 = rdd2.map(lambda word : (word, 1))
 rdd4 = rdd3.reduceByKey(lambda x, y: x + y)
 
-result_folder = 's3://fcc-spark-example/output/word_count_all_books'
+result_folder = 's3://fcc-spark-example/output/word_count_all_books_output'
 rdd4.saveAsTextFile(result_folder)
 
-print(rdd4.take(100))
+print(rdd4.take(10))
 

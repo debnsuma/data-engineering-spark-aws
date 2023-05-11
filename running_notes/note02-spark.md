@@ -2,7 +2,7 @@ Introduction to Apache Spark
 =============================
 
 - General Purpose 
-- In momery 
+- In memory 
 - Compute Engine/Data Processing Engine 
 
 
@@ -14,7 +14,7 @@ Compute             - Spark (in place of MR)
 
 Plug and play compute engine which needs some Storage System and Resource Manager 
 
-In momery
+In memory
 ==========
 In MR 
 ======
@@ -90,6 +90,102 @@ Graph (DAG) -> Directed Acyclic Graph
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dataset (samples)
+=================
+1,2013-07-25 00:00:00.0,11599,CLOSED
+2,2013-07-25 00:00:00.0,256,PENDING_PAYMENT
+3,2013-07-25 00:00:00.0,12111,COMPLETE
+4,2013-07-25 00:00:00.0,8827,CLOSED
+5,2013-07-25 00:00:00.0,11318,COMPLETE
+
+Findout the no. of orders based on different status 
+
+CLOSED, 100
+PENDING_PAYMENT, 300
+COMPLETE, 50
+
+===============
+
+(<key>, <value>)
+
+CLOSED, 1
+PENDING_PAYMENT, 1
+COMPLETE, 1
+CLOSED, 1
+
+MAP transformation 
+
+
+('CLOSED', 1),
+('PENDING_PAYMENT', 1),
+('COMPLETE', 1),
+('CLOSED', 1),
+('COMPLETE', 1),
+('COMPLETE', 1),
+('COMPLETE', 1)
+
+
+
+
+10
+5
+6
+
+
+Map transformation 
+-------------------
+1000 Input Records =====> 1000 Output Records 
+
+ReduceByKey
+------------
+1000 Input Records =====> <= No. of input records (No. of unique Keys) 
+
+
+    K ,  V
+[('256', 10),
+ ('12111', 6),
+ ('11318', 6),
+ ('7130', 7),
+ ('2911', 6),
+ ('5657', 12),
+ ('9149', 4),
+ ('9842', 7),
+ ('7276', 5),
+ ('9488', 7),
+ ('2711', 3),
+ ('333', 6),
+ ('656', 5),
+ ('6983', 6),
+ ('4189', 3),
+ ('4840', 2),
+ ('5863', 6),
+ ('8214', 5),
+ ('7776', 8),
+ ('1549', 4)]
 
 
 
